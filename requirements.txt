@@ -2,3 +2,4 @@ lizard
 flask
 filetype
 pathlib
+coverage
