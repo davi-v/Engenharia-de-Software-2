@@ -2,3 +2,8 @@ lizard
 flask
 filetype
 pathlib
+flake8
+webdriver-manager
+coverage
+pytest
+selenium

@@ -1,15 +1,10 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
 name: Python application
 
 permissions: write-all
 
 on:
   push:
-    branches: [ main, test-e2e ]
   pull_request:
-    branches: [ main, test-e2e ]
 
 jobs:
   server:
@@ -28,10 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        sudo pip install flake8 flask filetype pathlib
-
-    - name: Install xvfb
-      run: sudo apt-get install xvfb
+        sudo pip install -r requirements.txt
 
     - name: Lint with flake8
       run: |
@@ -40,41 +32,10 @@ jobs:
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
         
-    - name: Run server
+    - name: Run server in the background
       run: |
-         sudo timeout 300s python Project/src/main.py
-  
-  tests:
+         sudo python Project/src/main.py &
 
-    runs-on: ubuntu-latest
-
-    steps:
-
-    - uses: actions/checkout@v3
-
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-
-    - name: Set up geckodriver
-      uses: browser-actions/setup-geckodriver@latest
-
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        sudo pip install flake8 pytest coverage selenium flask lizard filetype pathlib
-
-    - name: Install xvfb
-      run: sudo apt-get install xvfb
-
-    - name: Lint with flake8
-      run: |
-        # stop the build if there are Python syntax errors or undefined names
-        flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
-        # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
-        flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
-        
     - name: Run tests and collect coverage
       run: |
         coverage run -m pytest
@@ -85,7 +46,7 @@ jobs:
     - name: Generate report with lizard
       run: lizard > lizard-relatório.txt
 
-    - name: Update resources
+    - name: Salvar relatório lizard no repositório
       uses: test-room-7/action-update-file@v1
       with:
           file-path: lizard-relatório.txt
