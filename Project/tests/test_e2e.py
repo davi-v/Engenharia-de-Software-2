@@ -1,12 +1,11 @@
 import pytest
 from selenium import webdriver
-from selenium.webdriver.firefox.options import Options as FirefoxOptions
 
 def test_first_case_selenium():
 
-	options = FirefoxOptions()
-	options.add_argument("--headless")
-	driver = webdriver.Firefox()
+	options = webdriver.FirefoxOptions()
+	options.headless = True
+	driver = webdriver.Firefox(options=options)
 	
 	driver.get("http://127.0.0.1:80")
 	assert "Upload File" in driver.title
