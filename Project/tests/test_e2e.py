@@ -1,14 +1,12 @@
+import pytest
 from selenium import webdriver
 from webdriver_manager.chrome import ChromeDriverManager
 from webdriver_manager.core.utils import ChromeType
 from selenium.webdriver.chrome.options import Options
 from selenium.webdriver.chrome.service import Service
 
-def test_first_case_selenium():
-
-	#options = webdriver.FirefoxOptions()
-	#options.headless = True
-	#driver = webdriver.Firefox(options=options)
+@pytest.fixture
+def browser():
 	chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
 	chrome_options = Options()
@@ -26,7 +24,11 @@ def test_first_case_selenium():
 	
 	driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
 	
-	driver.get("http://127.0.0.1:80")
-	assert "Upload File" in driver.title
+	yield driver
 
 	driver.quit()
+
+def test_title_selenium(browser):
+
+	browser.get("http://127.0.0.1:80")
+	assert "Upload File" in browser.title
