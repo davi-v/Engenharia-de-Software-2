@@ -25,9 +25,6 @@ jobs:
       with:
         python-version: "3.10"
 
-    - name: Removing previous chrome instances on runner 
-      run: sudo apt purge google-chrome-stable 
-
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
@@ -46,7 +43,6 @@ jobs:
     - name: Run server
       run: |
          sudo timeout 300s python Project/src/main.py
-         sudo kill -9 `pidof <Project/src/main.py`
   
   tests:
 
@@ -61,13 +57,14 @@ jobs:
       with:
         python-version: "3.10"
 
-    - name: Removing previous chrome instances on runner 
-      run: sudo apt purge google-chrome-stable 
+    - name: Set up geckodriver
+      uses: browser-actions/setup-geckodriver@latest
+      run: geckodriver --version
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        sudo pip install flake8 pytest coverage chromedriver-autoinstaller selenium pyvirtualdisplay flask lizard filetype pathlib
+        sudo pip install flake8 pytest coverage selenium flask lizard filetype pathlib
 
     - name: Install xvfb
       run: sudo apt-get install xvfb

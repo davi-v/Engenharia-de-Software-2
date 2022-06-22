@@ -1,0 +1,35 @@
+1655856856809	geckodriver	INFO	Listening on 127.0.0.1:62819
+1655856859792	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62820" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\laisg\\AppData\\Local\\Temp\\rust_mozprofileu6tOtH"
+1655856863029	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:62820
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\laisg\\AppData\\Local\\Temp\\rust_mozprofileu6tOtH\\search.json.mozlz4", (void 0)))
+1655856871799	Marionette	INFO	Listening on port 62848
+DevTools listening on ws://localhost:62820/devtools/browser/690108c9-0d4e-46f5-afd2-a357499c4315
+Read port: 62848
+1655856872447	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1655856942665	Marionette	INFO	Stopped listening on port 62848
+console.warn: TopSitesFeed: Failed to fetch data from Contile server: NetworkError when attempting to fetch resource.
+[Parent 7432, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+1655856950388	geckodriver	INFO	Listening on 127.0.0.1:62883
+1655856953453	mozrunner::runner	INFO	Running command: "C:\\Program Files\\Mozilla Firefox\\firefox.exe" "--marionette" "--remote-debugging-port" "62884" "--remote-allow-hosts" "localhost" "-no-remote" "-profile" "C:\\Users\\laisg\\AppData\\Local\\Temp\\rust_mozprofilebBfpic"
+1655856954027	Marionette	INFO	Marionette enabled
+WebDriver BiDi listening on ws://localhost:62884
+console.warn: SearchSettings: "get: No settings file exists, new profile?" (new NotFoundError("Could not open the file at C:\\Users\\laisg\\AppData\\Local\\Temp\\rust_mozprofilebBfpic\\search.json.mozlz4", (void 0)))
+1655856957634	Marionette	INFO	Listening on port 62906
+DevTools listening on ws://localhost:62884/devtools/browser/393c7b9e-6cf4-4f12-aa04-8c3268f02387
+Read port: 62906
+1655856958165	RemoteAgent	WARN	TLS certificate errors will be ignored for this session
+1655856958459	Marionette	INFO	Stopped listening on port 62906
+!!! error running onStopped callback: TypeError: callback is not a function
+[Parent 4268, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+[Parent 4268, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+console.log: "RemoteSettingsWorker error: Error: Can't import when we've started shutting down."
+console.log: "RemoteSettingsWorker error: Error: Can't import when we've started shutting down."
+console.log: "RemoteSettingsWorker error: Error: Can't import when we've started shutting down."
+console.log: "RemoteSettingsWorker error: Error: Can't import when we've started shutting down."
+console.log: "RemoteSettingsWorker error: Error: Can't import when we've started shutting down."
+console.log: "RemoteSettingsWorker error: Error: Can't import when we've started shutting down."
+[Parent 4268, IPC I/O Parent] WARNING: file /builds/worker/checkouts/gecko/ipc/chromium/src/base/process_util_win.cc:167
+JavaScript error: resource://gre/modules/CrashManager.jsm, line 906: AbortError: IOUtils: Shutting down and refusing additional I/O tasks
+RunWatchdog: Mainthread nested event loops during hang: 
+ --- (no nested event loop active)
