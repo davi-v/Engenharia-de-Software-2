@@ -142,3 +142,20 @@ def test_search_for_audio(browser, audio_setup):
 	    	table_content.append(col.text)
 
 	assert "Music" in str(table_content)
+
+def test_recent_uploads(browser, audio_setup, image_setup):
+	browser.get("http://127.0.0.1/recent")
+
+	h1 = browser.find_element(By.TAG_NAME, 'h1')
+	assert 'Uploads Recentes' == h1.text
+
+	table_content = []
+	rows = browser.find_elements(By.XPATH,"//table/tbody/tr")
+	
+	for row in rows:
+	    cols = row.find_elements(By.XPATH,"./*")
+	    for col in cols:
+	    	table_content.append(col.text)
+
+	assert "Bob" in str(table_content)
+	assert "Music" in str(table_content)
