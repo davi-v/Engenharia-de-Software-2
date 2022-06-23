@@ -96,3 +96,49 @@ def test_upload_audio(browser, audio_setup):
 
 	assert 'Music' == h1.text
 	assert 'Audio de teste' == p.text
+
+def test_search_for_image(browser, image_setup):
+	browser.get("http://127.0.0.1/search")
+
+	input_title = browser.find_element(By.NAME, 'title')
+	input_title.clear()
+	input_title.send_keys("Bob")
+
+	form_element = browser.find_element(By.TAG_NAME,'form')
+	form_element.submit()
+
+	h1 = browser.find_element(By.TAG_NAME, 'h1')
+	assert 'Arquivos Encontrados' == h1.text
+
+	table_content = []
+	rows = browser.find_elements(By.XPATH,"//table/tbody/tr")
+	
+	for row in rows:
+	    cols = row.find_elements(By.XPATH,"./*")
+	    for col in cols:
+	    	table_content.append(col.text)
+
+	assert "Bob" in str(table_content)
+
+def test_search_for_audio(browser, audio_setup):
+	browser.get("http://127.0.0.1/search")
+
+	input_title = browser.find_element(By.NAME, 'title')
+	input_title.clear()
+	input_title.send_keys("Music")
+
+	form_element = browser.find_element(By.TAG_NAME,'form')
+	form_element.submit()
+
+	h1 = browser.find_element(By.TAG_NAME, 'h1')
+	assert 'Arquivos Encontrados' == h1.text
+
+	table_content = []
+	rows = browser.find_elements(By.XPATH,"//table/tbody/tr")
+	
+	for row in rows:
+	    cols = row.find_elements(By.XPATH,"./*")
+	    for col in cols:
+	    	table_content.append(col.text)
+
+	assert "Music" in str(table_content)
