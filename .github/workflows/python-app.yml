@@ -1,19 +1,14 @@
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://help.github.com/actions/language-and-framework-guides/using-python-with-github-actions
-
 name: Python application
 
 permissions: write-all
 
 on:
   push:
-    branches: [ main, coverage ]
   pull_request:
-    branches: [ main, coverage ]
 
 jobs:
   build:
-
+  
     runs-on: ubuntu-latest
 
     steps:
@@ -28,8 +23,7 @@ jobs:
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
-        pip install flake8 pytest coverage
-        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+        sudo pip install -r requirements.txt
 
     - name: Lint with flake8
       run: |
@@ -37,6 +31,10 @@ jobs:
         flake8 . --count --select=E9,F63,F7,F82 --show-source --statistics
         # exit-zero treats all errors as warnings. The GitHub editor is 127 chars wide
         flake8 . --count --exit-zero --max-complexity=10 --max-line-length=127 --statistics
+        
+    - name: Run server in the background
+      run: |
+         sudo python Project/src/main.py &
 
     - name: Run tests and collect coverage
       run: |
@@ -48,7 +46,7 @@ jobs:
     - name: Generate report with lizard
       run: lizard > lizard-relatório.txt
 
-    - name: Update resources
+    - name: Salvar relatório lizard no repositório
       uses: test-room-7/action-update-file@v1
       with:
           file-path: lizard-relatório.txt
