@@ -10,7 +10,6 @@ from pathlib import Path
 
 @pytest.fixture
 def browser():
-	chrome_service = Service(ChromeDriverManager(chrome_type=ChromeType.CHROMIUM).install())
 
 	chrome_options = Options()
 	options = [
@@ -25,7 +24,7 @@ def browser():
 	for option in options:
 	    chrome_options.add_argument(option)
 	
-	driver = webdriver.Chrome(service=chrome_service, options=chrome_options)
+	driver = webdriver.Chrome(service=Service(ChromeDriverManager().install()), options=chrome_options)
 	
 	yield driver
 
