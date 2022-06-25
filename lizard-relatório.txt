@@ -9,24 +9,25 @@
        2      1     10      1       2 searchResult@9-10@./Project/src/pages/searchResult.py
        5      1     18      0       8 GetUniqueFileId@8-15@./Project/src/pages/pHome.py
       24      8    162      0      31 mainPage@18-48@./Project/src/pages/pHome.py
+       5      1     23      0       5 pShutdown@5-9@./Project/src/pages/pShutdown.py
        2      1      9      0       2 aboutCallback@4-5@./Project/src/pages/about.py
        3      1     26      0       3 recentCallback@5-7@./Project/src/pages/recent.py
        2      1     10      1       2 not_found@4-5@./Project/src/pages/pError404.py
        2      1      9      1       2 GetCookieName@3-4@./Project/src/cookies.py
-       7      1     47      7       7 __init__@7-13@./Project/src/db.py
-       7      2     50      2       8 __init__@16-23@./Project/src/db.py
-       3      1     27      2       3 save@25-27@./Project/src/db.py
-       3      1     43      7       3 _saveFileImpl@29-31@./Project/src/db.py
-       2      1     43      6       2 saveFile@33-34@./Project/src/db.py
-       3      2     22      2       3 deletePrivateDBItem@36-38@./Project/src/db.py
-       7      4     51      2       7 findPublicDBItemsByTitle@40-46@./Project/src/db.py
-       4      2     24      2       8 tryReadContents@48-55@./Project/src/db.py
-      10      5    120      3      20 getItemsSortedByDate@57-76@./Project/src/db.py
-       2      1     13      1       5 size@78-82@./Project/src/db.py
-       2      1     19      2       2 isPasswordProtected@87-88@./Project/src/db.py
-       2      1     16      2       2 getFilePassword@89-90@./Project/src/db.py
-       4      1     26      4       4 __init__@93-96@./Project/src/db.py
-       5      2     38      1       5 GetItems@98-102@./Project/src/db.py
+       7      1     47      7       7 __init__@8-14@./Project/src/db.py
+      16      3    127      2      22 __init__@17-38@./Project/src/db.py
+      14      2     90      2      15 save@40-54@./Project/src/db.py
+       3      1     43      7       3 _saveFileImpl@56-58@./Project/src/db.py
+       2      1     43      6       2 saveFile@60-61@./Project/src/db.py
+       3      2     22      2       3 deletePrivateDBItem@63-65@./Project/src/db.py
+       7      4     51      2       7 findPublicDBItemsByTitle@67-73@./Project/src/db.py
+       4      2     24      2       8 tryReadContents@75-82@./Project/src/db.py
+      10      5    120      3      20 getItemsSortedByDate@84-103@./Project/src/db.py
+       2      1     13      1       5 size@105-109@./Project/src/db.py
+       2      1     19      2       2 isPasswordProtected@114-115@./Project/src/db.py
+       2      1     16      2       2 getFilePassword@116-117@./Project/src/db.py
+       4      1     26      4       4 __init__@120-123@./Project/src/db.py
+       5      2     38      1       5 GetItems@125-129@./Project/src/db.py
        2      1     14      0       2 GetCurrentUTCTimestamp@3-4@./Project/src/timeUtils.py
        2      1     12      1       2 TimestampToDatetime@6-7@./Project/src/timeUtils.py
        2      1      8      1       2 DatetimeToStr@9-10@./Project/src/timeUtils.py
@@ -104,22 +105,24 @@
        8      2     82      1      10 test_search2Itens@40-49@./Project/tests/test_search.py
        7      1     56      1       8 test_searchDoesNotReturnPrivateItem@51-58@./Project/tests/test_search.py
       10      3    113      1      12 test_PubPrivPubReturns2Pubs@60-71@./Project/tests/test_search.py
-20 file analyzed.
+22 file analyzed.
 ==============================================================
 NLOC    Avg.NLOC  AvgCCN  Avg.token  function_cnt    file
 --------------------------------------------------------------
      14      11.0     4.0       65.0         1     ./Project/src/pages/search.py
+      3       0.0     0.0        0.0         0     ./Project/src/pages/shutdownVariables.py
      72      17.0     5.2      106.2         4     ./Project/src/pages/uploads.py
       8       2.0     1.0       10.0         1     ./Project/src/pages/searchResult.py
      35      14.5     4.5       90.0         2     ./Project/src/pages/pHome.py
+      8       5.0     1.0       23.0         1     ./Project/src/pages/pShutdown.py
       4       2.0     1.0        9.0         1     ./Project/src/pages/about.py
       6       3.0     1.0       26.0         1     ./Project/src/pages/recent.py
       4       2.0     1.0       10.0         1     ./Project/src/pages/pError404.py
-      5       0.0     0.0        0.0         0     ./Project/src/constants.py
+      8       0.0     0.0        0.0         0     ./Project/src/constants.py
       2       2.0     1.0        9.0         1     ./Project/src/cookies.py
-     75       4.4     1.8       38.5        14     ./Project/src/db.py
+     96       5.8     1.9       48.5        14     ./Project/src/db.py
      10       2.2     1.0       12.5         4     ./Project/src/timeUtils.py
-      5       0.0     0.0        0.0         0     ./Project/src/main.py
+     13       0.0     0.0        0.0         0     ./Project/src/main.py
      14       4.0     1.0       18.0         1     ./Project/src/app.py
      85       5.2     1.1       44.8        16     ./Project/tests/test_uploads.py
     117      11.7     1.8       83.4         9     ./Project/tests/test_e2e.py
@@ -134,4 +137,4 @@ No thresholds exceeded (cyclomatic_complexity > 15 or length > 1000 or nloc > 10
 ==========================================================================================
 Total nloc   Avg.NLOC  AvgCCN  Avg.token   Fun Cnt  Warning cnt   Fun Rt   nloc Rt
 ------------------------------------------------------------------------------------------
-       674       5.6     1.5       44.0      103            0      0.00    0.00
+       717       5.8     1.5       45.2      104            0      0.00    0.00
