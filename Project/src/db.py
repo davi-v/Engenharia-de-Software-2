@@ -1,6 +1,7 @@
 # Abstração do banco de dados
 
-import json, threading
+import base64, binascii, json, threading
+from time import time
 from timeUtils import*
 
 class DBItem:
@@ -17,6 +18,20 @@ class DB:
         if path is not None:
             with open(path) as f:
                 self.db = json.load(f)
+
+            # convert str to DBItem
+            for key in self.db:
+
+                e = self.db[key]
+                
+                filename = e['filename']
+                title = e['title']
+                desc = e['desc']
+                data = binascii.unhexlify(e['data'])
+                timestamp = e['timestamp']
+                password = e['password']
+
+                self.db[key] = DBItem(filename, title, desc, data, timestamp, password)
         else:
             self.db = {}
 
@@ -24,7 +39,19 @@ class DB:
 
     def save(self, path):
         with open(path, 'w') as f:
-            json.dump(self.db, f)
+            # convert DBItem to str
+            d = {}
+            for key in self.db:
+                e = self.db[key]
+                d[key] = {
+                    'filename': e.filename,
+                    'title': e.title,
+                    'desc': e.desc,
+                    'data': e.data.hex(),
+                    'timestamp': e.timestamp,
+                    'password': e.password
+                }
+            json.dump(d, f)
 
     def _saveFileImpl(self, id, filename, title, desc, data, password):
         timestamp = GetCurrentUTCTimestamp()

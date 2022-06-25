@@ -7,3 +7,4 @@ webdriver-manager
 coverage
 pytest
 selenium
+waitress
