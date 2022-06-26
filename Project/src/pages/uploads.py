@@ -57,16 +57,16 @@ def uploadsPath(id):
                     
         else:
 
-            def canSendFile():
+            def isAuthenticated():
                 return not db.isPasswordProtected(id) or hasCorrectCookie(db.getFilePassword(id))
 
             if 'download' in request.form:
-                if canSendFile():
+                if isAuthenticated():
                     return send_file(io.BytesIO(dbItem.data), download_name=dbItem.filename, as_attachment=True)
                 return render_template('invalidRequest.html')
 
             if 'delete' in request.form:
-                if db.isPasswordProtected(id):
+                if isAuthenticated():
                     db.deletePrivateDBItem(id)
                     return make_response(redirect('/'))
                 else:
